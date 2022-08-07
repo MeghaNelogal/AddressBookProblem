@@ -141,6 +141,7 @@ namespace AddressBook
             Console.WriteLine("\nContact Deleted SuccessFully\n");
             Display();
         }
+
     }
 }
     
