@@ -7,12 +7,12 @@
            
             Console.WriteLine("------WelCome To Address Book Program------");
             bool end = true;
-            Console.WriteLine("SelectNumber\n1.Add Contact\n2.Display\n3.EditContact\n4.End Of Program");
+            Console.WriteLine("SelectNumber\n1.Add Contact\n2.Display\n3.EditContact\n4.DeleteContact\n5.End Of Program");
             Contact contact = new Contact();
             AddressBookMain addContact = new AddressBookMain();
             while (end)
             {
-                Console.WriteLine("choose program to exicute : ");
+                Console.WriteLine("choose program to execute : ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -26,11 +26,15 @@
                         addContact.EditContact();
                         break;
                     case 4:
+                        addContact.DeleteContact();
+                        break;
+
+                    case 5:
                         end = false;
                         Console.WriteLine("Program Is Ended");
                         break;
                 }
             }
-        }       
-    }
+        }
+    }           
 }
