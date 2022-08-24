@@ -198,5 +198,14 @@ namespace AddressBook
                 }
             }
         }
+        public void SortingDataByPersonName()
+        {
+            var result = addressBook.OrderBy(x => x.FirstName).ToList();
+            foreach (var contact in result)
+            {
+                Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+
+            }
+        }
     }
 }
