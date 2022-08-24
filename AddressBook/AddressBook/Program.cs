@@ -4,37 +4,52 @@
     {
         public static void Main(string[] args)
         {
-           
-            Console.WriteLine("------WelCome To Address Book Program------");
-            bool end = true;
-            Console.WriteLine("SelectNumber\n1.Add Contact\n2.Display\n3.EditContact\n4.DeleteContact\n5.End Of Program");
-            Contact contact = new Contact();
-            AddressBookMain addContact = new AddressBookMain();
-            while (end)
+
+            AddressBookMain addressBook = new AddressBookMain();
+            Console.WriteLine("Please Enter the Information");
+            bool check = true;
+            Console.WriteLine("1.Display\n2.Edit\n3.Delete\n4.Add Multiple person\n5.Check unique name\n6. check No Duplicate");
+
+            while (check)
             {
-                Console.WriteLine("choose program to execute : ");
+                Console.WriteLine("Enter The Above option");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
                     case 1:
-                        addContact.CreateContact();
-                        break;
-                    case 2:
-                        addContact.Display();
-                        break;
-                    case 3:
-                        addContact.EditContact();
-                        break;
-                    case 4:
-                        addContact.DeleteContact();
+                        Console.WriteLine("To Display ");
+                        addressBook.Display();
                         break;
 
-                    case 5:
-                        end = false;
-                        Console.WriteLine("Program Is Ended");
+
+                    case 2:
+                        Console.WriteLine("Enter the first name to edit");
+
+                        addressBook.Update();
                         break;
+                    case 3:
+                        Console.WriteLine("Delete Item");
+                        addressBook.Delete();
+                        break;
+                    case 4:
+                        Console.WriteLine("Add multiple contact");
+                        addressBook.Delete();
+                        break;
+                    case 5:
+                        Console.WriteLine("Unique name");
+                        addressBook.Adduniquecontacts();
+                        break;
+                    case 6:
+                        Console.WriteLine("Enter name:");
+                        string name = Console.ReadLine();
+                        addressBook.NameExists(name);
+                        break;
+                    case 0:
+                        check = false; break;
                 }
+
             }
+
         }
-    }           
+    }
 }
