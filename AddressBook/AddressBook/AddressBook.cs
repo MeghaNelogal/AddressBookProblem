@@ -188,5 +188,15 @@ namespace AddressBook
                 }
             }
         }
+        public void GetPhoneNumberByCity(string cityName)
+        {
+            foreach (var contact in addressBook)
+            {
+                if (contact.City.Equals(cityName))
+                {
+                    Console.WriteLine("Mobile Number is" + contact.MobileNumber);
+                }
+            }
+        }
     }
 }
