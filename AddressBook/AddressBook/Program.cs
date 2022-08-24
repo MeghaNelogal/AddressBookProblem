@@ -9,7 +9,7 @@
             AddressBook addressBook = new AddressBook();
             Console.WriteLine("Please Enter the Information");
             bool check = true;
-            Console.WriteLine(" Enter the Zero to Stop The Execution 0\n Display The Information1\n Edit the Information 2\n Delete The Information 3\n Add Data in the Dictionary 4\n EditingDictionary Data in the AddressBook 5\n  Deleting data from Dictionary 6\n Searching Person in City 8\n Searching Person Details With The Name Of City 9\n Displaying Contact Number 10\n Sorting the Person Data by thge City 12\n");
+            Console.WriteLine(" Enter the Zero to Stop The Execution 0\n Display The Information1\n Edit the Information 2\n Delete The Information 3\n Add Data in the Dictionary 4\n EditingDictionary Data in the AddressBook 5\n  Deleting data from Dictionary 6\n Searching Person in City 8\n Searching Person Details With The Name Of City 9\n Displaying Contact Number 10\n Sorting the Data By the Person Name 11\n Displayingt he Data from the Text File 13\n");
 
             while (check)
             {
@@ -52,14 +52,22 @@
                     case 10:
                         Console.WriteLine("Enter the City Name  for Searching Person City in Dictionary ");
                         string enterCityName = Console.ReadLine();
-                        addressBook.GetPhoneNumberByCity(enterCityName); break;
+                        addressBook.GetPhoneNumberByCity(enterCityName); 
                         break;
-                    case 12:
+                    case 11:
                         Console.WriteLine("Enter the City Name And State name for Sorting the  Person Details ");
-                        addressBook.SortingCityAndState(); break;
+                        addressBook.SortingCityAndState(); 
                         break;
-                    case 0: check = false; break;
-                    default: Console.WriteLine("Please Enter the Valid Option"); break;
+                        
+                    case 13:
+                        Console.WriteLine("Displaying the Details From the Text File ");
+                        addressBook.ReaderReadingFileUsingIO(); 
+                        break;
+                        ;
+                    case 0: check = false;
+                        break;
+                    default: Console.WriteLine("Please Enter the Valid Option"); 
+                        break;
                 }
 
             }

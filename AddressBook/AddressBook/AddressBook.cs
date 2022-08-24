@@ -14,6 +14,7 @@ namespace AddressBook
         Dictionary<string, string> cityPerson = new Dictionary<string, string>();
         List<string> firstName = new List<string>();
         List<string> cityState = new List<string>();
+        const string FILE_PATH = @"D:\BridgelabzPracticeProblems\AddressBookProblem\AddressBookProblem\AddressBook\AddressBook\AddressBook.txt";
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -207,6 +208,25 @@ namespace AddressBook
             {
                 Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
 
+            }
+        }
+        public void ReaderReadingFileUsingIO()
+        {
+            if (File.Exists(FILE_PATH))
+            {
+                StreamReader read = new StreamReader(FILE_PATH);
+                try
+                {
+                    string s = "";
+                    while ((s = read.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
