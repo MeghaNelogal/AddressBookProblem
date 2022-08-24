@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace AddressBook
         List<string> firstName = new List<string>();
         List<string> cityState = new List<string>();
         const string FILE_PATH = @"D:\BridgelabzPracticeProblems\AddressBookProblem\AddressBookProblem\AddressBook\AddressBook\AddressBook.txt";
+        const string IMPORT_CSV_FILE_PATH = @"D:\BridgelabzPracticeProblems\AddressBookProblem\AddressBookProblem\AddressBook\AddressBook\AddressBook.CSV";
+        const string EXPORT_CSV_FILE_PATH = @"D:\BridgelabzPracticeProblems\AddressBookProblem\AddressBookProblem\AddressBook\AddressBook\AddressBookExport.CSV";
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -201,7 +205,7 @@ namespace AddressBook
                 }
             }
         }
-        public void SortingCityAndState()
+        public void SortingByPersonName()
         {
             var result = this.addressBook.OrderBy(x => x.City).ToList();
             foreach (var contact in result)
@@ -229,5 +233,28 @@ namespace AddressBook
                 }
             }
         }
+        public void ReadingAndWritingDataFromTheCSVFile()
+        {
+            using (var reader = new StreamReader(IMPORT_CSV_FILE_PATH))
+            {
+                using (var Csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = Csv.GetRecords<Contact>().ToList();
+                    foreach (var contact in records)
+                    {
+                        Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                    }
+                    using (var writer = new StreamWriter(EXPORT_CSV_FILE_PATH))
+                    {
+                        using (var CsvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                        {
+                            CsvExport.WriteRecords(records);
+
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
